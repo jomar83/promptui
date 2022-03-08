@@ -1,4 +1,4 @@
-module github.com/spaceweasel/promptui
+module github.com/duelyy/promptui
 
 go 1.12
 

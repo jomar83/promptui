@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/spaceweasel/promptui"
+	"github.com/duelyy/promptui"
 )
 
 func main() {

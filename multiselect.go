@@ -9,8 +9,8 @@ import (
 
 	"github.com/chzyer/readline"
 	"github.com/juju/ansiterm"
-	"github.com/spaceweasel/promptui/list"
-	"github.com/spaceweasel/promptui/screenbuf"
+	"github.com/duelyy/promptui/list"
+	"github.com/duelyy/promptui/screenbuf"
 )
 
 // MultiSelect represents a list of checkable items used to enable selections, they can be used as a
