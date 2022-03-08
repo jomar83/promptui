@@ -9,8 +9,8 @@ import (
 
 	"github.com/chzyer/readline"
 	"github.com/juju/ansiterm"
-	"github.com/spaceweasel/promptui/list"
-	"github.com/spaceweasel/promptui/screenbuf"
+	"github.com/duelyy/promptui/list"
+	"github.com/duelyy/promptui/screenbuf"
 )
 
 // SelectedAdd is used internally inside SelectWithAdd when the add option is selected in select mode.
