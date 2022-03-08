@@ -8,6 +8,9 @@ var (
 	// KeyEnter is the default key for submission/selection.
 	KeyEnter rune = readline.CharEnter
 
+	// KeyEsc is the default key for deselect.
+	KeyEsc rune = readline.CharEsc
+
 	// KeyCtrlH is the key for deleting input text.
 	KeyCtrlH rune = readline.CharCtrlH
 
@@ -27,3 +30,4 @@ var (
 	KeyForward        rune = readline.CharForward
 	KeyForwardDisplay      = "→"
 )
+

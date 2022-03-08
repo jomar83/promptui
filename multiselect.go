@@ -101,6 +101,9 @@ type MultiSelectKeys struct {
 
 	// Toggle is the key used to toggle the item selection. Defaults to the space key.
 	Toggle Key
+
+	// Esc is the key used to unselect all the item selection. Defaults to the esc key.
+	Esc Key
 }
 
 // MultiSelectTemplates allow a select list to be customized following stdlib
@@ -268,7 +271,11 @@ func (s *MultiSelect) innerRun(cursorPos, scroll int, top rune) ([]int, error) {
 			} else {
 				s.selected[idx] = true
 			}
-
+		case key == s.Keys.Esc.Code && !searchMode:
+			items, _ := s.list.Items()
+			for i := range items {
+				s.selected[i] = false
+			}
 		case key == s.Keys.Search.Code:
 			if !canSearch {
 				break
@@ -526,6 +533,7 @@ func (s *MultiSelect) setKeys() {
 		PageDown: Key{Code: KeyForward, Display: KeyForwardDisplay},
 		Toggle:   Key{Code: ' ', Display: "SPACE"},
 		Search:   Key{Code: '/', Display: "/"},
+		Esc:      Key{Code: KeyEsc, Display: "ESC"},
 	}
 }
 
@@ -556,6 +564,7 @@ func (s *MultiSelect) renderHelp(b bool) []byte {
 		PageDownKey string
 		PageUpKey   string
 		ToggleKey   string
+		EscKey      string
 		Search      bool
 		SearchKey   string
 	}{
@@ -564,9 +573,11 @@ func (s *MultiSelect) renderHelp(b bool) []byte {
 		PageDownKey: s.Keys.PageDown.Display,
 		PageUpKey:   s.Keys.PageUp.Display,
 		ToggleKey:   s.Keys.Toggle.Display,
+		EscKey:      s.Keys.Esc.Display,
 		SearchKey:   s.Keys.Search.Display,
 		Search:      b,
 	}
 
 	return render(s.Templates.help, keys)
 }
+
