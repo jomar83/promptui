@@ -8,9 +8,9 @@ import (
 	"text/template"
 
 	"github.com/chzyer/readline"
-	"github.com/juju/ansiterm"
 	"github.com/duelyy/promptui/list"
 	"github.com/duelyy/promptui/screenbuf"
+	"github.com/juju/ansiterm"
 )
 
 // MultiSelect represents a list of checkable items used to enable selections, they can be used as a
@@ -271,7 +271,7 @@ func (s *MultiSelect) innerRun(cursorPos, scroll int, top rune) ([]int, error) {
 			} else {
 				s.selected[idx] = true
 			}
-		case key == s.Keys.Esc.Code && !searchMode:
+		case key == s.Keys.Esc.Code || (key == 'q' && !searchMode):
 			items, _ := s.list.Items()
 			for i := range items {
 				s.selected[i] = false
@@ -580,4 +580,3 @@ func (s *MultiSelect) renderHelp(b bool) []byte {
 
 	return render(s.Templates.help, keys)
 }
-
