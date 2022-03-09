@@ -65,4 +65,8 @@ func main() {
 	for i := 0; i < len(result); i++ {
 		fmt.Printf("You choose number %d: %s\n", i+1, peppers[i].Name)
 	}
+
+	if len(result) == 0 {
+		fmt.Println("Nothing was selected.")
+	}
 }
