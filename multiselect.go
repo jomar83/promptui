@@ -271,7 +271,7 @@ func (s *MultiSelect) innerRun(cursorPos, scroll int, top rune) ([]int, error) {
 			} else {
 				s.selected[idx] = true
 			}
-		case key == s.Keys.Esc.Code || (key == 'q' && !searchMode):
+		case key == s.Keys.Esc.Code && !searchMode:
 			for i := range s.selected {
 				delete(s.selected, i)
 			}
@@ -506,7 +506,8 @@ func (s *MultiSelect) prepareTemplates() error {
 	if tpls.Help == "" {
 		tpls.Help = fmt.Sprintf(`{{ "Navigate with arrow keys:" | faint }} {{ .NextKey | faint }} ` +
 			`{{ .PrevKey | faint }} {{ .PageDownKey | faint }} {{ .PageUpKey | faint }}` +
-			`{{ " (" | faint }}{{ .ToggleKey | faint }} {{ "to select)" | faint }}`)
+			`{{ " (" | faint }}{{ .ToggleKey | faint }} {{ "to select)" | faint }}` +
+			`{{ " (" | faint }}{{ .EscKey | faint }} {{ "to unselect all items)" | faint }}`)
 	}
 
 	tpl, err = template.New("").Funcs(tpls.FuncMap).Parse(tpls.Help)
@@ -532,7 +533,7 @@ func (s *MultiSelect) setKeys() {
 		PageDown: Key{Code: KeyForward, Display: KeyForwardDisplay},
 		Toggle:   Key{Code: ' ', Display: "SPACE"},
 		Search:   Key{Code: '/', Display: "/"},
-		Esc:      Key{Code: KeyEsc, Display: "ESC"},
+		Esc:      Key{Code: 'q', Display: "q"},
 	}
 }
 
@@ -562,8 +563,8 @@ func (s *MultiSelect) renderHelp(b bool) []byte {
 		PrevKey     string
 		PageDownKey string
 		PageUpKey   string
-		ToggleKey   string
 		EscKey      string
+		ToggleKey   string
 		Search      bool
 		SearchKey   string
 	}{
@@ -571,8 +572,8 @@ func (s *MultiSelect) renderHelp(b bool) []byte {
 		PrevKey:     s.Keys.Prev.Display,
 		PageDownKey: s.Keys.PageDown.Display,
 		PageUpKey:   s.Keys.PageUp.Display,
-		ToggleKey:   s.Keys.Toggle.Display,
 		EscKey:      s.Keys.Esc.Display,
+		ToggleKey:   s.Keys.Toggle.Display,
 		SearchKey:   s.Keys.Search.Display,
 		Search:      b,
 	}
