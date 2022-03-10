@@ -51,7 +51,7 @@ func main() {
 		Label:     "Spicy Level",
 		Items:     peppers,
 		Templates: templates,
-		Size:      5,
+		Size:      10,
 		Searcher:  searcher,
 	}
 
@@ -63,7 +63,7 @@ func main() {
 	}
 
 	for i := 0; i < len(result); i++ {
-		fmt.Printf("You choose number %d: %s\n", i+1, peppers[i].Name)
+		fmt.Printf("You choose number %d: %s\n", result[i]+1, peppers[result[i]].Name)
 	}
 
 	if len(result) == 0 {
