@@ -272,10 +272,8 @@ func (s *MultiSelect) innerRun(cursorPos, scroll int, top rune) ([]int, error) {
 				s.selected[idx] = true
 			}
 		case key == s.Keys.Esc.Code || (key == 'q' && !searchMode):
-			items, _ := s.list.Items()
-			for i := range items {
+			for i := range s.selected {
 				delete(s.selected, i)
-				//s.selected[i] = false
 			}
 		case key == s.Keys.Search.Code:
 			if !canSearch {

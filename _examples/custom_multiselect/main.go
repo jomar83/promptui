@@ -51,7 +51,7 @@ func main() {
 		Label:     "Spicy Level",
 		Items:     peppers,
 		Templates: templates,
-		Size:      10,
+		Size:      5,
 		Searcher:  searcher,
 	}
 
