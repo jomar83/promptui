@@ -2,9 +2,8 @@ package promptui
 
 import (
 	"bytes"
+	"github.com/jomar83/promptui/screenbuf"
 	"testing"
-
-	"github.com/duelyy/promptui/screenbuf"
 )
 
 func TestSelectTemplateRender(t *testing.T) {

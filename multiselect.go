@@ -8,8 +8,8 @@ import (
 	"text/template"
 
 	"github.com/chzyer/readline"
-	"github.com/duelyy/promptui/list"
-	"github.com/duelyy/promptui/screenbuf"
+	"github.com/jomar83/promptui/list"
+	"github.com/jomar83/promptui/screenbuf"
 	"github.com/juju/ansiterm"
 )
 

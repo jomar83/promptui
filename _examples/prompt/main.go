@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/duelyy/promptui"
+	"github.com/jomar83/promptui"
 )
 
 func main() {

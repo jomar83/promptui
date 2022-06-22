@@ -7,7 +7,7 @@ import (
 	"text/template"
 
 	"github.com/chzyer/readline"
-	"github.com/duelyy/promptui/screenbuf"
+	"github.com/jomar83/promptui/screenbuf"
 )
 
 // Prompt represents a single line text field input with options for validation and input masks.

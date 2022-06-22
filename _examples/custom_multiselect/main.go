@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/duelyy/promptui"
+	"github.com/jomar83/promptui"
 )
 
 type pepper struct {
