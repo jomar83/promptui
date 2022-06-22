@@ -27,10 +27,10 @@ func main() {
 		{Name: "Dragon’s Breath", HeatUnit: 855000, Peppers: 9},
 	}
 
-	templates := &promptui.SelectTemplates{
-		Label:    "{{ . }}?",
-		Active:   "\U0001F336 {{ .Name | cyan }} ({{ .HeatUnit | red }})",
-		Inactive: "  {{ .Name | cyan }} ({{ .HeatUnit | red }})",
+	templates := &promptui.MultiSelectTemplates{
+		Label:  "{{ . }}?",
+		Active: "\U0001F336 {{ .Name | cyan }} ({{ .HeatUnit | red }})",
+		//Inactive: "  {{ .Name | cyan }} ({{ .HeatUnit | red }})",
 		Selected: "\U0001F336 {{ .Name | red | cyan }}",
 		Details: `
 --------- Pepper ----------
@@ -47,20 +47,26 @@ func main() {
 		return strings.Contains(name, input)
 	}
 
-	prompt := promptui.Select{
+	prompt := promptui.MultiSelect{
 		Label:     "Spicy Level",
 		Items:     peppers,
 		Templates: templates,
-		Size:      4,
+		Size:      10,
 		Searcher:  searcher,
 	}
 
-	i, _, err := prompt.Run()
+	result, err := prompt.Run()
 
 	if err != nil {
 		fmt.Printf("Prompt failed %v\n", err)
 		return
 	}
 
-	fmt.Printf("You choose number %d: %s\n", i+1, peppers[i].Name)
+	for i := 0; i < len(result); i++ {
+		fmt.Printf("You choose number %d: %s\n", result[i]+1, peppers[result[i]].Name)
+	}
+
+	if len(result) == 0 {
+		fmt.Println("Nothing was selected.")
+	}
 }
